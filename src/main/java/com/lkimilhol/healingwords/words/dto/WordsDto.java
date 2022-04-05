@@ -1,11 +1,11 @@
-package com.lkimilhol.healingwords.controller.dto;
+package com.lkimilhol.healingwords.words.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public class Words {
+public class WordsDto {
     private final String author;
     private final String content;
 }
