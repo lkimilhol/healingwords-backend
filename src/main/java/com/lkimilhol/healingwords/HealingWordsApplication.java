@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HealingwordsApplication {
+public class HealingWordsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HealingwordsApplication.class, args);
+		SpringApplication.run(HealingWordsApplication.class, args);
 	}
 
 }
