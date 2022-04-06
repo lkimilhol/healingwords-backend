@@ -1,5 +1,6 @@
 package com.lkimilhol.healingwords.words.domain;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,7 +14,8 @@ public class Words {
     private Long id;
 
     // TODO 포장 클래스 생성
-    private String content;
+    @Embedded
+    private Text text;
 
     // TODO 글쓴이 작성
 
