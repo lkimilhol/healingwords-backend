@@ -10,7 +10,7 @@ import com.lkimilhol.healingwords.exception.TextLengthExceedException;
 @Embeddable
 @NoArgsConstructor
 public class Text {
-    public static int MAX_LENGTH = 255;
+    public static final int MAX_LENGTH = 255;
 
     @Column(name = "text", nullable = false)
     private String content;
