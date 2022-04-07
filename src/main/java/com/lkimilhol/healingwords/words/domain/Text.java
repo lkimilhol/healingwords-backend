@@ -16,10 +16,13 @@ public class Text {
     private String content;
 
     public Text(String content) {
+        checkLength(content);
+        this.content = content;
+    }
+
+    private void checkLength(String content) {
         if (content.length() > MAX_LENGTH) {
             throw new TextLengthExceedException();
         }
-
-        this.content = content;
     }
 }

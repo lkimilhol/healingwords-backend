@@ -13,11 +13,11 @@ public class Words {
     @Id
     private Long id;
 
-    // TODO 포장 클래스 생성
     @Embedded
     private Text text;
 
-    // TODO 글쓴이 작성
+    @Embedded
+    private Writer writer;
 
     // TODO 비밀번호 작성
 
