@@ -1,6 +1,6 @@
 package words.domain
 
-import com.lkimilhol.healingwords.exception.TextLengthExceedException
+import exception.TextLengthExceedException
 import io.kotlintest.shouldBe
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.DisplayName
