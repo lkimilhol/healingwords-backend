@@ -6,6 +6,8 @@ import javax.persistence.Id;
 
 import lombok.NoArgsConstructor;
 
+import words.domain.Text;
+
 @Entity
 @NoArgsConstructor
 public class Words {
