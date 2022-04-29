@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import lombok.NoArgsConstructor;
 
 import words.domain.Text;
+import words.domain.Writer;
 
 @Entity
 @NoArgsConstructor
