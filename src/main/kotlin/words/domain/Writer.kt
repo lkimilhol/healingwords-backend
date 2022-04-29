@@ -1,6 +1,6 @@
 package words.domain
 
-import com.lkimilhol.healingwords.exception.WriterLengthExceedException
+import exception.WriterLengthExceedException
 import javax.persistence.Column
 import javax.persistence.Embeddable
 
