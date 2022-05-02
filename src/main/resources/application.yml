@@ -1,19 +1,34 @@
 server:
-  port: 1525
+  port: 8080
 
 ---
 server:
-  port: 1525
-
+  port: 8080
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
 spring:
-  profiles:
-    active: local
+  h2:
+    console:
+      enabled: true
+      path: /db
   datasource:
+    url: jdbc:h2:mem:userdb;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/test
     username: sa
     password:
   jpa:
+    database: h2
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    open-in-view: false
     database-platform: org.hibernate.dialect.H2Dialect
-
----
+    properties:
+      hibernate:
+        format_sql: true
+  config:
+    activate:
+      on-profile:
