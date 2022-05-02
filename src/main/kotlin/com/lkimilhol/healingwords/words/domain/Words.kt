@@ -1,4 +1,4 @@
-package words.domain
+package com.lkimilhol.healingwords.words.domain
 
 import javax.persistence.Embedded
 import javax.persistence.Entity

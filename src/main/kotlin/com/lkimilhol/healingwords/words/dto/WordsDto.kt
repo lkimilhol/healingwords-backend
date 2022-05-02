@@ -1,4 +1,4 @@
-package words.dto
+package com.lkimilhol.healingwords.words.dto
 
 data class WordsDto(
     val author: String,
