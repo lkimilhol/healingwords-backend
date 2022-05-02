@@ -1,7 +1,6 @@
-package words.domain
+package com.lkimilhol.healingwords.words.domain
 
 import com.lkimilhol.healingwords.exception.TextLengthExceedException
-import com.lkimilhol.healingwords.words.domain.Text
 import io.kotlintest.shouldBe
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.DisplayName
