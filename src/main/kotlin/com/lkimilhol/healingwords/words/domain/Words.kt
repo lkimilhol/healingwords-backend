@@ -5,14 +5,13 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-class Words(
+class Words private constructor(
     @Embedded
     val text: Text,
 
     @Embedded
     val writer: Writer
 ) {
-
     @Id
     private val id: Long? = null
 
