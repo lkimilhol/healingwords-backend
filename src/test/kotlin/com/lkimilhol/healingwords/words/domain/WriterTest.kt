@@ -1,6 +1,7 @@
 package com.lkimilhol.healingwords.words.domain
 
 import com.lkimilhol.healingwords.exception.WriterLengthExceedException
+import com.lkimilhol.healingwords.writer.domain.Writer
 import io.kotlintest.shouldBe
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName

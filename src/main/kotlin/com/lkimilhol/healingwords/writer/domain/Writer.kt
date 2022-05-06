@@ -1,4 +1,4 @@
-package com.lkimilhol.healingwords.words.domain
+package com.lkimilhol.healingwords.writer.domain
 
 import com.lkimilhol.healingwords.exception.WriterLengthExceedException
 import javax.persistence.Column

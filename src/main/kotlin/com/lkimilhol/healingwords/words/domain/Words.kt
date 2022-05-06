@@ -1,5 +1,6 @@
 package com.lkimilhol.healingwords.words.domain
 
+import com.lkimilhol.healingwords.writer.domain.Writer
 import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.Id
