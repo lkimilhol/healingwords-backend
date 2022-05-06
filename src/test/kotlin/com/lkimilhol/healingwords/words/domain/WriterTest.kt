@@ -1,6 +1,7 @@
 package com.lkimilhol.healingwords.words.domain
 
 import com.lkimilhol.healingwords.exception.WriterLengthExceedException
+import com.lkimilhol.healingwords.writer.domain.Password
 import com.lkimilhol.healingwords.writer.domain.Writer
 import io.kotlintest.shouldBe
 import org.assertj.core.api.Assertions
@@ -15,7 +16,7 @@ internal class WriterTest {
         // given
         // when
         // then
-        Assertions.assertThatThrownBy { Writer.create("lkimilhollkimilhol") }
+        Assertions.assertThatThrownBy { Writer.create("lkimilhollkimilhol", Password.create("password"))}
             .isInstanceOf(WriterLengthExceedException::class.java)
     }
 
@@ -25,7 +26,7 @@ internal class WriterTest {
         val name = "lkimilhol"
 
         // when
-        val writer = Writer.create(name)
+        val writer = Writer.create(name, Password.create("password"))
 
         // then
         writer.name() shouldBe name
