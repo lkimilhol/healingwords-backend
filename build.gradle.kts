@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.6.7"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("org.jetbrains.kotlin.plugin.noarg") version "1.6.21"
+	id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21"
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
 }
@@ -36,6 +38,11 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.0")
+}
+
+noArg {
+	annotation("com.my.Annotation")
+	invokeInitializers = true
 }
 
 tasks.withType<KotlinCompile> {
