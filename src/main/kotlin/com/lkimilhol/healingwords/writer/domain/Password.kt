@@ -7,8 +7,8 @@ private const val MAX_LENGTH = 15
 
 class Password private constructor(
     @Column(name = "password", length = MAX_LENGTH)
-    private val contents : String
-        ) {
+    private val contents: String
+) {
 
     fun contents(): String {
         return contents
