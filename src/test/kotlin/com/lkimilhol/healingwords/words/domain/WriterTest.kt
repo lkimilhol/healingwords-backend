@@ -1,6 +1,7 @@
 package com.lkimilhol.healingwords.words.domain
 
 import com.lkimilhol.healingwords.exception.WriterLengthExceedException
+import com.lkimilhol.healingwords.writer.domain.Name
 import com.lkimilhol.healingwords.writer.domain.Password
 import com.lkimilhol.healingwords.writer.domain.Writer
 import io.kotlintest.shouldBe
@@ -12,21 +13,15 @@ import org.junit.jupiter.api.Test
 internal class WriterTest {
 
     @Test
-    fun `생성 실패`() {
-        // given
-        // when
-        // then
-        Assertions.assertThatThrownBy { Writer.create("lkimilhollkimilhol", Password.create("password"))}
-            .isInstanceOf(WriterLengthExceedException::class.java)
-    }
-
-    @Test
     fun `생성 성공`() {
         // given
         val name = "lkimilhol"
 
         // when
-        val writer = Writer.create(name, Password.create("password"))
+        val writer = Writer.create(
+            Name.create(name),
+            Password.create("password")
+        )
 
         // then
         writer.name() shouldBe name

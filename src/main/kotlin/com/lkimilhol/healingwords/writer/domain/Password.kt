@@ -6,7 +6,7 @@ import javax.persistence.Column
 private const val MAX_LENGTH = 15
 
 class Password private constructor(
-    @Column(name = "password", length = MAX_LENGTH)
+    @Column(name = "password", length = MAX_LENGTH, nullable = false)
     private val contents: String
 ) {
 

@@ -8,7 +8,7 @@ private const val MAX_LENGTH = 10
 
 class Name private constructor(
     @Embedded
-    @Column(name = "name", length = MAX_LENGTH)
+    @Column(name = "name", nullable = false, length = MAX_LENGTH)
     private val contents: String
 
 ) {
