@@ -9,7 +9,9 @@ class Writer private constructor(
     private val name: Name,
 
     @Embedded
-    private val password: Password
+    private val password: Password,
+
+    private val email: String
 ) {
 
     fun name(): String {
@@ -17,8 +19,8 @@ class Writer private constructor(
     }
 
     companion object {
-        fun create(name: Name, password: Password): Writer {
-            return Writer(name, password)
+        fun create(name: Name, password: Password, email: String): Writer {
+            return Writer(name, password, email)
         }
     }
 }
