@@ -11,15 +11,24 @@ class Writer private constructor(
     @Embedded
     private val password: Password,
 
-    private val email: String
+    @Embedded
+    private val email: Email
 ) {
 
     fun name(): String {
         return name.content()
     }
 
+    fun password(): String {
+        return password.contents()
+    }
+
+    fun email(): String {
+        return email.contents()
+    }
+
     companion object {
-        fun create(name: Name, password: Password, email: String): Writer {
+        fun create(name: Name, password: Password, email: Email): Writer {
             return Writer(name, password, email)
         }
     }
