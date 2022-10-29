@@ -10,8 +10,10 @@ import com.lkimilhol.healingwords.writer.exception.NotFoundWriterException
 import com.lkimilhol.healingwords.writer.exception.WriterNameDuplicateException
 import com.lkimilhol.healingwords.writer.repository.WriterRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
+@Transactional
 class WriterService(
     private val writerRepository: WriterRepository
 ) {

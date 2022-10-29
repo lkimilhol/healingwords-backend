@@ -29,16 +29,18 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
 	implementation("org.springframework.boot:spring-boot-starter")
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
-	implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.2.1")
-	implementation ("com.h2database:h2:2.1.212")
+	// db
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation ("mysql:mysql-connector-java")
+	implementation("org.mariadb.jdbc:mariadb-java-client")
+	implementation ("com.vladmihalcea:hibernate-types-55:2.20.0")
+	implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.0")
-	testImplementation("io.mockk:mockk:1.12.0")
+	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
+	testImplementation("io.mockk:mockk:1.13.2")
 }
 
 noArg {

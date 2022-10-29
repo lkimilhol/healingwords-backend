@@ -8,7 +8,7 @@ import javax.persistence.Id
 @Entity
 class Words private constructor(
     @Embedded
-    val text: Text,
+    var text: Text,
 
     @Embedded
     val writer: Writer
