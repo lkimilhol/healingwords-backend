@@ -22,16 +22,16 @@ class WordsService(
 
     // 비회원 글 작성
     fun writeWithNonMember(wordsDto: CreateWordsNonMemberDto) {
-        wordsRepository.save(
-            Words.create(
-                Text.create(wordsDto.content),
-                Writer.create(
-                    Name.create(wordsDto.author),
-                    Password.create(wordsDto.password),
-                    Email.create(wordsDto.email)
-                )
+        val words = Words.create(
+            Text.create(wordsDto.content),
+            Writer.create(
+                Name.create(wordsDto.author),
+                Password.create(wordsDto.password),
+                Email.create(wordsDto.email)
             )
         )
+
+        wordsRepository.save(words)
     }
 
     // 비회원 글 수정

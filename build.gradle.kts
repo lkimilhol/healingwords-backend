@@ -34,9 +34,9 @@ dependencies {
 	// db
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation ("mysql:mysql-connector-java")
-	implementation("org.mariadb.jdbc:mariadb-java-client")
-	implementation ("com.vladmihalcea:hibernate-types-55:2.20.0")
 	implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
+	implementation("org.hibernate.orm:hibernate-core:6.1.5.Final")
+
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")

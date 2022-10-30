@@ -6,7 +6,8 @@ import javax.persistence.Embeddable
 
 @Embeddable
 class Text private constructor(
-    @Column(name = "text", nullable = false) private val content: String
+    @Column(name = "text", nullable = false)
+    private var content: String
 ) {
     fun content() : String {
         return content

@@ -1,9 +1,7 @@
 package com.lkimilhol.healingwords.words.domain
 
 import com.lkimilhol.healingwords.writer.domain.Writer
-import javax.persistence.Embedded
-import javax.persistence.Entity
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 class Words private constructor(
@@ -11,10 +9,11 @@ class Words private constructor(
     var text: Text,
 
     @Embedded
-    val writer: Writer
+    var writer: Writer
 ) {
     @Id
-    private val id: Long? = null
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private var id: Long? = null
 
     // TODO 비밀번호 작성
 
