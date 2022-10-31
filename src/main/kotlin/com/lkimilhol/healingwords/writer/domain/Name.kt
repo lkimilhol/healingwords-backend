@@ -2,14 +2,16 @@ package com.lkimilhol.healingwords.writer.domain
 
 import com.lkimilhol.healingwords.writer.exception.NameLengthExceedException
 import javax.persistence.Column
+import javax.persistence.Embeddable
 import javax.persistence.Embedded
 
 private const val MAX_LENGTH = 10
 
+@Embeddable
 class Name private constructor(
     @Embedded
     @Column(name = "name", nullable = false, length = MAX_LENGTH)
-    private val contents: String
+    private var contents: String
 
 ) {
     fun content(): String {

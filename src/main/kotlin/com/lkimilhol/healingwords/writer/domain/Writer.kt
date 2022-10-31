@@ -6,13 +6,13 @@ import javax.persistence.Embedded
 @Embeddable
 class Writer private constructor(
     @Embedded
-    private val name: Name,
+    private var name: Name,
 
     @Embedded
-    private val password: Password,
+    private var password: Password,
 
     @Embedded
-    private val email: Email
+    private var email: Email
 ) {
 
     fun name(): String {
