@@ -1,6 +1,6 @@
 package com.lkimilhol.healingwords.writer.domain
 
-import com.lkimilhol.healingwords.writer.exception.NameLengthExceedException
+import com.lkimilhol.healingwords.writer.exception.NicknameLengthExceedException
 import javax.persistence.Column
 import javax.persistence.Embeddable
 import javax.persistence.Embedded
@@ -8,9 +8,9 @@ import javax.persistence.Embedded
 private const val MAX_LENGTH = 10
 
 @Embeddable
-class Name private constructor(
+class Nickname private constructor(
     @Embedded
-    @Column(name = "name", nullable = false, length = MAX_LENGTH)
+    @Column(name = "nickname", nullable = false, length = MAX_LENGTH)
     private var contents: String
 
 ) {
@@ -19,14 +19,14 @@ class Name private constructor(
     }
 
     companion object {
-        fun create(contents: String): Name {
+        fun create(contents: String): Nickname {
             validate(contents)
-            return Name(contents)
+            return Nickname(contents)
         }
 
         private fun validate(contents: String) {
             if (contents.length > MAX_LENGTH) {
-                throw NameLengthExceedException()
+                throw NicknameLengthExceedException()
             }
         }
     }
