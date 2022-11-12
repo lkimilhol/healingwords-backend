@@ -1,0 +1,149 @@
+#### 게시물 저장
+#POST {{host}}/v1/posts
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "category": "GOODS",
+#  "title": "1",
+#  "contents": "정말 좋은 테스트 용품 입니다.😀 #돈마호크",
+#  "imageUrls": [
+#    "https://image1.url",
+#    "https://image2.url"
+#  ],
+#  "eventUuid": "36297e19-bd55-4da8-898d-bfed94ab1455"
+#}
+#
+#### 게시글 수정
+#PUT {{host}}/v1/posts/ba27da29-11c0-4dc0-b958-9d8835f557bc
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "category": "FOOD",
+#  "title": "change title",
+#  "contents": "수정 수정 #돈마호크",
+#  "imageUrls": [
+#    "https://image1.url"
+#  ]
+#}
+#
+#### 게시물 리스트 조회
+#GET {{host}}/v1/display/posts?eventUuid=c58e4c31-4b50-478a-bfa1-baa09cffa64b
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#### 게시글 단건 가져오기
+#GET {{host}}/v1/posts/9fe40255-fabf-4431-a844-b94341d630a7
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#### 게시글 삭제
+#DELETE {{host}}/v1/posts/212fe804-d404-4161-a271-44336ba1dad0
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#### 게시물 좋아요.
+#POST {{host}}/v1/posts/9fe40255-fabf-4431-a844-b94341d630a7/like
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "like": false
+#}
+#
+#### 게시물 댓글 달기
+#POST {{host}}/v1/posts/889586a0-f1b3-4417-bf7b-dbcacf1bab9f/comments
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "contents": "너무 너정무 좋아요"
+#}
+#
+#### 게시물 댓글 수정
+#PUT {{host}}/v1/comments/542ceca3-f2d9-4043-ab71-e587ca7a6dbe
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "contents": "수정 수정"
+#}
+#
+#### 댓글 삭제
+#DELETE {{host}}/v1/comments/bf371a78-2025-410f-8ad8-05bc442ed1e0
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#### 게시물 댓글에 답글 달기
+#POST {{host}}/v1/comments/bb248d10-dfe8-4cb1-b2e5-7aebc5348fcd/replies
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "contents": "너무 너무 좋아요 의 답글3"
+#}
+#
+#### 게시물 코멘트 좋아요.
+#POST {{host}}/v1/comments/bb248d10-dfe8-4cb1-b2e5-7aebc5348fcd/like
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "like": true
+#}
+#
+#### 게시물 댓글 리스트 조회
+#GET {{host}}/v1/display/posts/889586a0-f1b3-4417-bf7b-dbcacf1bab9f/comments
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#### 해시태그로 게시물 가져오기
+#GET {{host}}/v1/display/posts?hashTag=돈마호크&pageIdx=0&pageSize=2
+#Accept: application/json
+#
+#### 회원 피드 조회
+#GET {{host}}/v1/display/member/campi/feeds?pageIdx=0&pageSize=8
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#### 게시글 신고
+#POST {{host}}/v1/posts/1b6365c1-b471-4532-93af-f31fd5695df9/report
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "reason" : "스팸"
+#}
+#
+#### 댓글 신고
+#POST {{host}}/v1/comments/442d1ed4-c178-41d7-8bc0-39709a5e2ba6/report
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "reason" : "스팸"
+#}
+#
+#### 게시글 차단하기
+#POST {{host}}/v1/posts/dc4b8642-e8d2-4f70-b11b-f4695ccef5df/block HTTP/1.1
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "reason" : "스팸"
+#}
+#
+#### 댓글 차단하기
+#POST {{host}}/v1/comments/d55b7efb-1f4a-4a07-9d67-e7937b66e13a/block HTTP/1.1
+#Content-Type: application/json
+#Authorization: Bearer {{token}}
+#
+#{
+#  "reason" : "스팸"
+#}
+#
+#### 게시글 인증 완료 확인
+#GET {{host}}/v1/posts/8362b1a8-5227-4ec6-9424-3c01608df1ac/verify HTTP/1.1
+#Content-Type: application/json
+#Authorization: Bearer {{token}}

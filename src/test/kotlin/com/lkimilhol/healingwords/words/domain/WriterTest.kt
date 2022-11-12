@@ -1,9 +1,6 @@
 package com.lkimilhol.healingwords.words.domain
 
-import com.lkimilhol.healingwords.writer.domain.Email
-import com.lkimilhol.healingwords.writer.domain.Name
-import com.lkimilhol.healingwords.writer.domain.Password
-import com.lkimilhol.healingwords.writer.domain.Writer
+import com.lkimilhol.healingwords.writer.domain.*
 import io.kotlintest.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -17,17 +14,20 @@ internal class WriterTest {
         val name = "lkimilhol"
         val password = "password"
         val email = "lkimilhol@healingwords.com"
+        val writerAuth = WriterAuth.MEMBER
 
         // when
         val writer = Writer.create(
-            Name.create(name),
+            Nickname.create(name),
             Password.create(password),
-            Email.create(email)
+            Email.create(email),
+            writerAuth
         )
 
         // then
-        writer.name() shouldBe name
+        writer.nickname() shouldBe name
         writer.password() shouldBe password
         writer.email() shouldBe email
+        writer.auth() shouldBe WriterAuth.MEMBER
     }
 }

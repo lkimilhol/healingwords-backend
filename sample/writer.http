@@ -1,0 +1,10 @@
+### 회원 등록
+
+POST {{host}}/v1/writers
+Content-Type: application/json
+
+{
+  "nickname": "test",
+  "password": "password",
+  "email": "email@email.com"
+}

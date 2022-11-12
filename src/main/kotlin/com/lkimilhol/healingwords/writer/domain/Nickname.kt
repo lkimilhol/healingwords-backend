@@ -3,14 +3,12 @@ package com.lkimilhol.healingwords.writer.domain
 import com.lkimilhol.healingwords.writer.exception.NicknameLengthExceedException
 import javax.persistence.Column
 import javax.persistence.Embeddable
-import javax.persistence.Embedded
 
 private const val MAX_LENGTH = 10
 
 @Embeddable
 class Nickname private constructor(
-    @Embedded
-    @Column(name = "nickname", nullable = false, length = MAX_LENGTH)
+    @Column(name = "nickname", length = MAX_LENGTH, nullable = false)
     private var contents: String
 
 ) {

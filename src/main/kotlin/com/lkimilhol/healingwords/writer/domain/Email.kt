@@ -5,15 +5,13 @@ import com.lkimilhol.healingwords.writer.exception.InvalidEmailFormException
 import java.util.regex.Pattern
 import javax.persistence.Column
 import javax.persistence.Embeddable
-import javax.persistence.Embedded
 
 private const val MAX_LENGTH = 15
 private const val EMAIL_REGEX = "^(.+)@(.+)\$"
 
 @Embeddable
 class Email private constructor(
-    @Embedded
-    @Column(name = "contents", length = MAX_LENGTH, nullable = false)
+    @Column(name = "email", length = MAX_LENGTH, nullable = false)
     private var contents: String
 ) {
     fun contents(): String {
