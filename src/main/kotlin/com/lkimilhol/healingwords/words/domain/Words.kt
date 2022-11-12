@@ -12,11 +12,11 @@ class Words {
     @Column
     private var text: Text? = null
 
-    // TODO 비밀번호 작성
-
     // TODO 작성일시
 
     // TODO 수정일시
+
+    // TODO 작성자 (admin, 추천자)
 
 //    @Embedded
 //    var text: Text? = null

@@ -1,35 +1,58 @@
 package com.lkimilhol.healingwords.writer.domain
 
-import javax.persistence.Embeddable
-import javax.persistence.Embedded
+import java.time.LocalDateTime
+import javax.persistence.*
 
-@Embeddable
-class Writer private constructor(
+@Entity
+class Writer(
     @Embedded
-    private var name: Name,
-
-    @Embedded
-    private var password: Password,
+    private var nickname: Nickname?,
 
     @Embedded
-    private var email: Email
+    private var password: Password?,
+
+    @Embedded
+    private var email: Email?,
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
+    private var writerAuth: WriterAuth,
+
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private var withdraw: Boolean = false,
+
+    @Column(nullable = false)
+    private val createDateTime: LocalDateTime = LocalDateTime.now(),
+
+    @Column(nullable = false)
+    private val updateDateTime: LocalDateTime = LocalDateTime.now(),
+
+    @Column
+    private var withdrawDateTime: LocalDateTime? = null
 ) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private val id: Long? = null
 
-    fun name(): String {
-        return name.content()
+    fun nickname(): Nickname? {
+        return nickname
     }
 
-    fun password(): String {
-        return password.contents()
+    fun password(): Password? {
+        return password
     }
 
-    fun email(): String {
-        return email.contents()
+    fun email(): Email? {
+        return email
+    }
+
+    fun auth(): WriterAuth {
+        return writerAuth
     }
 
     companion object {
-        fun create(name: Name, password: Password, email: Email): Writer {
-            return Writer(name, password, email)
+        fun create(nickname: Nickname, password: Password, email: Email, writerAuth: WriterAuth): Writer {
+            return Writer(nickname, password, email, writerAuth)
         }
     }
 }

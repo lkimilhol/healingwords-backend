@@ -1,28 +1,28 @@
 package com.lkimilhol.healingwords.writer.domain
 
-import com.lkimilhol.healingwords.writer.exception.NameLengthExceedException
+import com.lkimilhol.healingwords.writer.exception.NicknameLengthExceedException
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 
-internal class NameTest {
+internal class NicknameTest {
     @Test
     fun `생성 실패`() {
         // given
         // when
         // then
         assertThatThrownBy {
-            Name.create("namenamename")
-        }.isInstanceOf(NameLengthExceedException::class.java)
+            Nickname.create("namenamename")
+        }.isInstanceOf(NicknameLengthExceedException::class.java)
     }
 
     @Test
     fun `생성 성공`() {
         // given
         // when
-        val name = Name.create("name")
+        val nickName = Nickname.create("name")
 
         // then
-        assertThat(name.content()).isEqualTo("name")
+        assertThat(nickName.content()).isEqualTo("name")
     }
 }
