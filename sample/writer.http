@@ -4,7 +4,7 @@ POST {{host}}/v1/writers
 Content-Type: application/json
 
 {
-  "nickname": "test",
+  "nickname": "test1",
   "password": "password",
   "email": "email@email.com"
 }
