@@ -1,0 +1,9 @@
+### 글 등록
+
+POST {{host}}/words
+Content-Type: application/json
+
+{
+  "writerId": 1,
+  "content": "글은 소중합니다."
+}
