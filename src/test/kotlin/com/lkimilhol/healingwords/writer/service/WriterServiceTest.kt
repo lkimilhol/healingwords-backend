@@ -1,9 +1,10 @@
 package com.lkimilhol.healingwords.writer.service
 
-import com.lkimilhol.healingwords.writer.dto.MemberAddDto
+import com.lkimilhol.healingwords.writer.dto.request.WriterAddRequest
 import com.lkimilhol.healingwords.writer.exception.AlreadyMemberException
 import com.lkimilhol.healingwords.writer.exception.DuplicateNicknameException
 import com.lkimilhol.healingwords.writer.repository.WriterRepository
+import com.lkimilhol.healingwords.writer.token.JwtTokenService
 import io.mockk.Called
 import io.mockk.every
 import io.mockk.mockk
@@ -13,12 +14,13 @@ import org.junit.jupiter.api.Test
 
 internal class WriterServiceTest {
     private val writerRepository = mockk<WriterRepository>()
-    private val writerService = WriterService(writerRepository)
+    private val jwtTokenService = mockk<JwtTokenService>()
+    private val writerService = WriterService(writerRepository, jwtTokenService)
 
     @Test
     fun `이메일이 중복되면 회원 가입이 불가능하다`() {
         // given
-        val memberAddDto = MemberAddDto(
+        val writerAddRequest = WriterAddRequest(
             nickname = "nickname",
             password = "password",
             email = "test@test.com",
@@ -29,7 +31,7 @@ internal class WriterServiceTest {
 
         // then
         assertThatThrownBy {
-            writerService.addMember(memberAddDto)
+            writerService.addMember(writerAddRequest)
         }.isInstanceOf(AlreadyMemberException::class.java)
 
         verify {writerRepository.save(any()) wasNot Called }
@@ -38,7 +40,7 @@ internal class WriterServiceTest {
     @Test
     fun `닉네임이 중복되면 회원 가입이 불가능하다`() {
         // given
-        val memberAddDto = MemberAddDto(
+        val writerAddRequest = WriterAddRequest(
             nickname = "nickname",
             password = "password",
             email = "test@test.com",
@@ -50,7 +52,7 @@ internal class WriterServiceTest {
 
         // then
         assertThatThrownBy {
-            writerService.addMember(memberAddDto)
+            writerService.addMember(writerAddRequest)
         }.isInstanceOf(DuplicateNicknameException::class.java)
 
         verify {writerRepository.save(any()) wasNot Called }

@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface WriterRepository : JpaRepository<Writer, Long> {
     fun existsByNickname(nickname: Nickname): Boolean
     fun existsByEmail(email: Email): Boolean
+    fun findWriterByEmail(email: Email): Writer?
 }
