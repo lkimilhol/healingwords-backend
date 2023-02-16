@@ -6,12 +6,9 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
 import java.nio.charset.StandardCharsets
 import java.util.*
-
-private const val TIME_ZONE = "Asia/Seoul"
 
 @Service
 class JwtTokenService(
@@ -20,8 +17,6 @@ class JwtTokenService(
     companion object {
         private const val TOKEN_VALID_SECOND = 30 * 60 * 1000L
     }
-
-    private val userDetailsService: UserDetailsService? = null
 
     fun generateToken(email: Email) : String {
         val key = Keys.hmacShaKeyFor((secretKey.toByteArray(StandardCharsets.UTF_8)))
