@@ -45,7 +45,7 @@ class WriterService(
         val writer = writerRepository.findWriterByEmail(Email.create(writerLoginRequest.email))
             ?: throw NotFoundWriterException()
 
-        if (Password.create(writerLoginRequest.password) != writer.password()) {
+        if (Password.create(writerLoginRequest.password).contents() != writer.password()!!.contents()) {
             throw InvalidPasswordException()
         }
 
