@@ -1,6 +1,7 @@
 package com.lkimilhol.healingwords.writer.controller
 
-import com.lkimilhol.healingwords.writer.dto.MemberAddDto
+import com.lkimilhol.healingwords.writer.dto.request.WriterAddRequest
+import com.lkimilhol.healingwords.writer.dto.request.WriterLoginRequest
 import com.lkimilhol.healingwords.writer.service.WriterService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -13,8 +14,14 @@ class WriterController (
 ){
 
     @PostMapping("/v1/writers")
-    fun register(@RequestBody memberAddDto: MemberAddDto): ResponseEntity<String> {
-        writerService.addMember(memberAddDto)
+    fun register(@RequestBody writerAddRequest: WriterAddRequest): ResponseEntity<String> {
+        writerService.addMember(writerAddRequest)
+        return ResponseEntity.ok("OK")
+    }
+
+    @PostMapping("/v1/writers/login")
+    fun login(@RequestBody writerLoginRequest: WriterLoginRequest) : ResponseEntity<String> {
+        writerService.login(writerLoginRequest)
         return ResponseEntity.ok("OK")
     }
 }

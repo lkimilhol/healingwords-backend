@@ -39,6 +39,14 @@ dependencies {
 	implementation ("mysql:mysql-connector-java")
 	implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
 
+	//security
+	implementation ("org.springframework.boot:spring-boot-starter-security")
+
+	// jwt
+	implementation ("io.jsonwebtoken:jjwt-api:0.11.2")
+	implementation ("io.jsonwebtoken:jjwt-impl:0.11.2")
+	implementation ("io.jsonwebtoken:jjwt-jackson:0.11.2")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 	testImplementation("io.mockk:mockk:1.13.2")
