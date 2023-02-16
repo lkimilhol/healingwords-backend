@@ -41,7 +41,7 @@ class WriterService(
         )
     }
 
-    fun login(writerLoginRequest: WriterLoginRequest) {
+    fun login(writerLoginRequest: WriterLoginRequest): String {
         val writer = writerRepository.findWriterByEmail(Email.create(writerLoginRequest.email))
             ?: throw NotFoundWriterException()
 
@@ -49,6 +49,6 @@ class WriterService(
             throw InvalidPasswordException()
         }
 
-        jwtTokenService.generateToken(writer.email()!!)
+        return jwtTokenService.generateToken(writer.email()!!)
     }
 }
