@@ -1,5 +1,6 @@
 package com.lkimilhol.healingwords.writer.domain
 
+import com.lkimilhol.healingwords.jpa.BaseEntity
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -21,15 +22,9 @@ class Writer(
     @Column(columnDefinition = "tinyint(1) default 1")
     private var withdraw: Boolean = false,
 
-    @Column(nullable = false)
-    private val createDateTime: LocalDateTime = LocalDateTime.now(),
-
-    @Column(nullable = false)
-    private val updateDateTime: LocalDateTime = LocalDateTime.now(),
-
     @Column
     private var withdrawDateTime: LocalDateTime? = null
-) {
+) : BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long? = null
