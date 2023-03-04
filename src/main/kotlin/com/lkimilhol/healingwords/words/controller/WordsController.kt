@@ -1,5 +1,6 @@
 package com.lkimilhol.healingwords.words.controller
 
+import com.lkimilhol.healingwords.token.LoginCheck
 import com.lkimilhol.healingwords.words.dto.WordsDto
 import com.lkimilhol.healingwords.words.dto.WriteWordsDto
 import com.lkimilhol.healingwords.words.service.WordsService
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class WordsController(
-    private val wordsService: WordsService
+    private val wordsService: WordsService,
 ) {
 
     @GetMapping("/words")
@@ -20,6 +21,7 @@ class WordsController(
         return ResponseEntity.ok(wordsDTO)
     }
 
+    @LoginCheck
     @PostMapping("/words")
     fun writeWords(@RequestBody wordsDto: WriteWordsDto) : ResponseEntity<String> {
         wordsService.write(wordsDto)

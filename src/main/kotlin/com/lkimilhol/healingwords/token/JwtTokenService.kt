@@ -1,5 +1,7 @@
-package com.lkimilhol.healingwords.writer.token
+package com.lkimilhol.healingwords.token
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.lkimilhol.healingwords.exception.InvalidTokenException
 import com.lkimilhol.healingwords.writer.domain.Email
 import io.jsonwebtoken.JwtException
 import io.jsonwebtoken.Jwts
@@ -14,10 +16,6 @@ import java.util.*
 class JwtTokenService(
     @Value("\${spring.jwt.secret}") private val secretKey: String
 ) {
-    companion object {
-        private const val TOKEN_VALID_SECOND = 30 * 60 * 1000L
-    }
-
     fun generateToken(email: Email) : String {
         val key = Keys.hmacShaKeyFor((secretKey.toByteArray(StandardCharsets.UTF_8)))
         val claims = Jwts.claims().setSubject(email.contents())
@@ -31,7 +29,18 @@ class JwtTokenService(
             .compact()
     }
 
-    fun isValid(token: String) : Boolean {
+    fun decodeToken(token: String): String {
+        val parts = token.split(".")
+        val charset = charset("UTF-8")
+        val payload = String(Base64.getUrlDecoder().decode(parts[1].toByteArray(charset)), charset)
+
+        val mapper = ObjectMapper()
+        val readValue = mapper.readValue(payload, Map::class.java) ?: throw InvalidTokenException()
+
+        return readValue["sub"].toString()
+    }
+
+    fun isInvalid(token: String) : Boolean {
         return try {
             val claims = Jwts.parserBuilder()
                 .setSigningKey(secretKey.toByteArray(StandardCharsets.UTF_8))
@@ -39,13 +48,15 @@ class JwtTokenService(
                 .parseClaimsJws(token)
                 .body
 
-            !claims.expiration.before(Date())
+            claims.expiration.before(Date())
         } catch (e: JwtException) {
-            false
+            true
         } catch (e: IllegalArgumentException) {
-            false
+            true
         }
     }
 
-
+    companion object {
+        private const val TOKEN_VALID_SECOND = 30 * 60 * 1000L
+    }
 }

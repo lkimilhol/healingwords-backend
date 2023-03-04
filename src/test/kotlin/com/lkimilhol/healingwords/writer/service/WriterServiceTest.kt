@@ -4,7 +4,7 @@ import com.lkimilhol.healingwords.writer.dto.request.WriterAddRequest
 import com.lkimilhol.healingwords.writer.exception.AlreadyMemberException
 import com.lkimilhol.healingwords.writer.exception.DuplicateNicknameException
 import com.lkimilhol.healingwords.writer.repository.WriterRepository
-import com.lkimilhol.healingwords.writer.token.JwtTokenService
+import com.lkimilhol.healingwords.token.JwtTokenService
 import io.mockk.Called
 import io.mockk.every
 import io.mockk.mockk
