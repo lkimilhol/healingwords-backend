@@ -8,7 +8,7 @@ import com.lkimilhol.healingwords.writer.exception.DuplicateNicknameException
 import com.lkimilhol.healingwords.writer.exception.InvalidPasswordException
 import com.lkimilhol.healingwords.writer.exception.NotFoundWriterException
 import com.lkimilhol.healingwords.writer.repository.WriterRepository
-import com.lkimilhol.healingwords.writer.token.JwtTokenService
+import com.lkimilhol.healingwords.token.JwtTokenService
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

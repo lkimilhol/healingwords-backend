@@ -2,6 +2,7 @@
 
 POST {{host}}/words
 Content-Type: application/json
+current-user: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbWFpbEBlbWFpbC5jb20iLCJpYXQiOjE2Nzc5Mjk5MDAsImV4cCI6MTY3NzkzMTcwMH0.wske_1B8FhsdbYAWJjpZ-h79Uq2ugcQdw_esuMk1_pE
 
 {
   "writerId": 1,

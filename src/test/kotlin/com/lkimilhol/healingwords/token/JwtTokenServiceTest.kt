@@ -1,4 +1,4 @@
-package com.lkimilhol.healingwords.writer.token
+package com.lkimilhol.healingwords.token
 
 import com.lkimilhol.healingwords.writer.domain.Email
 import io.kotlintest.shouldBe
@@ -13,6 +13,15 @@ internal class JwtTokenServiceTest {
     fun `jwt 토큰 생성 테스트`() {
         val jwtToken = jwtTokenService.generateToken(Email.create(email))
 
-        jwtTokenService.isValid(jwtToken) shouldBe true
+        jwtTokenService.isInvalid(jwtToken) shouldBe true
+    }
+
+    @Test
+    fun `jwt 토큰 디코드 테스트`() {
+        val jwtToken = jwtTokenService.generateToken(Email.create(email))
+
+        val decodeEmail = jwtTokenService.decodeToken(jwtToken)
+
+        decodeEmail shouldBe email
     }
 }
