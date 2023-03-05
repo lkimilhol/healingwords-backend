@@ -34,6 +34,6 @@ internal class TextTest {
         val text = Text.create(content)
 
         // then
-        text.content() shouldBe content
+        text.content shouldBe content
     }
 }

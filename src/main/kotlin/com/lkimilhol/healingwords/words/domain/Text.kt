@@ -7,11 +7,11 @@ import javax.persistence.Embeddable
 @Embeddable
 class Text(
     @Column(name = "text", nullable = false)
-    private var content: String
+    var content: String
 ) {
 
-    fun content(): String {
-        return content
+    fun hasForbidden(it: String): Boolean {
+        return content.contains(it)
     }
 
     companion object {
