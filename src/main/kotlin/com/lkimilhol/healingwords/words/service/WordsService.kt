@@ -1,8 +1,10 @@
 package com.lkimilhol.healingwords.words.service
 
+import com.lkimilhol.healingwords.exception.TextHasForbiddenWordException
 import com.lkimilhol.healingwords.words.domain.Text
 import com.lkimilhol.healingwords.words.domain.Words
 import com.lkimilhol.healingwords.words.dto.WriteWordsDto
+import com.lkimilhol.healingwords.words.repository.ForbiddenWordsRepository
 import com.lkimilhol.healingwords.words.repository.WordsRepository
 import com.lkimilhol.healingwords.writer.exception.NotFoundWriterException
 import com.lkimilhol.healingwords.writer.repository.WriterRepository
@@ -13,10 +15,10 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class WordsService(
     private val writerRepository: WriterRepository,
-    private val wordsRepository: WordsRepository
+    private val wordsRepository: WordsRepository,
+    private val forbiddenWordsRepository: ForbiddenWordsRepository
 ) {
 
-    // 비회원 글 작성
     fun write(wordsDto: WriteWordsDto) {
         val writer = writerRepository.findById(wordsDto.writerId)
 
@@ -24,9 +26,19 @@ class WordsService(
             throw NotFoundWriterException()
         }
 
+        val text = Text.create(wordsDto.content)
+
+        val forbiddenWords = forbiddenWordsRepository.findAll()
+
+        forbiddenWords.forEach {
+            if (text.hasForbidden(it.content)) {
+                throw TextHasForbiddenWordException()
+            }
+        }
+
         val words = Words(
             writer.get(),
-            Text.create(wordsDto.content)
+            text
         )
 
         wordsRepository.save(words)

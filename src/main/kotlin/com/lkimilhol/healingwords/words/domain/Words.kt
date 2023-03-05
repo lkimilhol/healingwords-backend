@@ -8,10 +8,10 @@ import javax.persistence.*
 @Table(name = "words")
 class Words (
     @ManyToOne
-    private var writer: Writer?,
+    var writer: Writer?,
 
     @Embedded
-    private var text: Text?
+    var text: Text?
 ) : BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
